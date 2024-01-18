@@ -17,37 +17,55 @@ void linkedListTraversal(Node *ptr)
     }
 }
 
-unique_ptr<Node> insertAtBeginning(unique_ptr<Node> head, int value)
+// Function to insert a value at the beginning of the linked list
+Node* insertAtBeginning(Node *head, int value)
 {
-    auto newNode = make_unique<Node>();
+    Node *newNode = new Node;
     newNode->data = value;
-    newNode->next = move(head);
+    newNode->next = head;
     return newNode;
 }
 
 int main()
 {
-    // Allocate memory for nodes in the linked list on the heap and link them
-    Node *head = new Node{7, nullptr};
-    Node *second = new Node{11, nullptr};
-    Node *third = new Node{41, nullptr};
-    Node *fourth = new Node{66, nullptr};
+    Node *head;
+    Node *second;
+    Node *third;
+    Node *fourth;
 
-    // Link nodes to form a linked list
+    // Allocate memory for nodes in the linked list on the heap
+    head = new Node;
+    second = new Node;
+    third = new Node;
+    fourth = new Node;
+
+    // Link first and second nodes
+    head->data = 7;
     head->next = second;
+
+    // Link second and third nodes
+    second->data = 11;
     second->next = third;
+
+    // Link third and fourth nodes
+    third->data = 41;
     third->next = fourth;
+
+    // Terminate the list at the third node
+    fourth->data = 66;
+    fourth->next = nullptr;
 
     cout << "Original Linked List:" << endl;
     linkedListTraversal(head);
 
-    // Insert a new node at the beginning
-    head = insertAtBeginning(move(unique_ptr<Node>(head)), 3);
+    // Insert a value at the beginning
+    int valueToInsert = 3;
+    head = insertAtBeginning(head, valueToInsert);
 
     cout << "\nLinked List after insertion at the beginning:" << endl;
     linkedListTraversal(head);
 
-    // Release allocated memory to prevent memory leaks
+    // Release allocated memory
     delete head;
     delete second;
     delete third;
