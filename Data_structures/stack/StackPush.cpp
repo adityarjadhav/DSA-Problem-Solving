@@ -41,8 +41,7 @@ int main()
     s->top = -1;
     s->arr = new int[s->size];
 
-    // Pushing elements onto the stack
-    push(s, 20);
+        push(s, 20);
     push(s, 34);
 
     // Free allocated memory
