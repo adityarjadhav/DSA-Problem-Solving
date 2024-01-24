@@ -45,8 +45,6 @@ int main()
     push(s, 20);
     push(s, 34);
 
-    // Your stack now contains 20 and 34
-
     // Free allocated memory
     delete[] s->arr;
     delete s;
