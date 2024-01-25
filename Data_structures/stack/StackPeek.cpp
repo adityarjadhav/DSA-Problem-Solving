@@ -24,6 +24,16 @@ int peek(stack *sp, int i)
     return -1;
 }
 
+int stackTop(stack *ptr)
+{
+    return ptr->arr[ptr->top];
+}
+
+int stackBottom(stack *ptr)
+{
+    return ptr->arr[0];
+}
+
 int main()
 {
 
